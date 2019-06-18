@@ -16,8 +16,11 @@ find_package(catkin REQUIRED COMPONENTS
   actionlib
   actionlib_msgs
   #geometry_msgs
+  cv_bridge
+  sensor_msgs
+  image_transport
 )
-
+find_package(OpenCV REQUIRED)
 ## System dependencies are found with CMake's conventions
 # find_package(Boost REQUIRED COMPONENTS system)
 
@@ -219,6 +222,9 @@ add_executable(simple_action_client src/simple_action_client.cpp)
 target_link_libraries( simple_action_client ${catkin_LIBRARIES})
 add_dependencies( simple_action_client ${lecture_pkg_EXPORTED_TARGETS})
 
+add_executable(opencv src/opencv.cpp)
+target_link_libraries( opencv ${catkin_LIBRARIES})
+target_link_libraries( opencv ${OpenCV_LIBRARIES})
 
 
 
